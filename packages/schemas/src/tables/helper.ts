@@ -181,7 +181,7 @@ export const getColumnStylesPropPanelSchema = ({
             },
           },
         }),
-      {}
+      {},
     ),
   },
 });
@@ -190,7 +190,7 @@ export const getBody = (value: string) => JSON.parse(value || '[]') as string[][
 
 export const getBodyWithRange = (
   value: string,
-  range?: { start: number; end?: number | undefined }
+  range?: { start: number; end?: number | undefined },
 ) => {
   const body = getBody(value);
   if (!range) return body;

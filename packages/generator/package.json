@@ -12,14 +12,10 @@
     "typescript",
     "react"
   ],
-  "description": "TypeScript base PDF generator and React base UI. Open source, developed by the community, and completely free to use under the MIT license!",
-  "homepage": "https://pdfme.com",
+  "description": "(This is a copy of the original pdfme pacakage that supports base PDF's on table schemas) TypeScript base PDF generator and React base UI. Open source, developed by the community, and completely free to use under the MIT license!",
   "repository": {
     "type": "git",
-    "url": "git@github.com:pdfme/pdfme.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pdfme/pdfme/issues"
+    "url": "git@github.com:mcornielje090404/pdfme.git"
   },
   "main": "dist/cjs/src/index.js",
   "module": "dist/esm/src/index.js",

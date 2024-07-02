@@ -19,7 +19,7 @@ const renderLine = async (
   schema: CellSchema,
   position: { x: number; y: number },
   width: number,
-  height: number
+  height: number,
 ) =>
   linePdfRender({
     ...arg,
@@ -45,7 +45,7 @@ const createLineDiv = (
   right: string | null,
   bottom: string | null,
   left: string | null,
-  borderColor: string
+  borderColor: string,
 ) => {
   const div = document.createElement('div');
   div.style.width = width;
@@ -79,25 +79,25 @@ const cellSchema: Plugin<CellSchema> = {
         },
       }),
       // TOP
-      renderLine(arg, schema, { x: position.x, y: position.y }, width, borderWidth.top),
+      renderLine(arg, schema, { x: position.x, y: position.y }, width, borderWidth?.top ?? 0),
       // RIGHT
       renderLine(
         arg,
         schema,
-        { x: position.x + width - borderWidth.right, y: position.y },
-        borderWidth.right,
-        height
+        { x: position.x + width - (borderWidth?.right ?? 0), y: position.y },
+        borderWidth?.right ?? 0,
+        height,
       ),
       // BOTTOM
       renderLine(
         arg,
         schema,
-        { x: position.x, y: position.y + height - borderWidth.bottom },
+        { x: position.x, y: position.y + height - (borderWidth?.bottom ?? 0) },
         width,
-        borderWidth.bottom
+        borderWidth?.bottom ?? 0,
       ),
       // LEFT
-      renderLine(arg, schema, { x: position.x, y: position.y }, borderWidth.left, height),
+      renderLine(arg, schema, { x: position.x, y: position.y }, borderWidth?.left ?? 0, height),
     ]);
     // TEXT
     await textPdfRender({
@@ -107,11 +107,21 @@ const cellSchema: Plugin<CellSchema> = {
         type: 'text',
         backgroundColor: '',
         position: {
-          x: position.x + borderWidth.left + padding.left,
-          y: position.y + borderWidth.top + padding.top,
+          x: position.x + (borderWidth?.left ?? 0) + (padding?.left ?? 0),
+          y: position.y + (borderWidth?.top ?? 0) + (padding?.top ?? 0),
         },
-        width: width - borderWidth.left - borderWidth.right - padding.left - padding.right,
-        height: height - borderWidth.top - borderWidth.bottom - padding.top - padding.bottom,
+        width:
+          width -
+          (borderWidth?.left ?? 0) -
+          (borderWidth?.right ?? 0) -
+          (padding?.left ?? 0) -
+          (padding?.right ?? 0),
+        height:
+          height -
+          (borderWidth?.top ?? 0) -
+          (borderWidth?.bottom ?? 0) -
+          (padding?.top ?? 0) -
+          (padding?.bottom ?? 0),
       },
     });
   },
@@ -129,10 +139,42 @@ const cellSchema: Plugin<CellSchema> = {
     rootElement.appendChild(textDiv);
 
     const lines = [
-      createLineDiv(`${width}mm`, `${borderWidth.top}mm`, '0mm', null, null, '0mm', borderColor),
-      createLineDiv(`${width}mm`, `${borderWidth.bottom}mm`, null, null, '0mm', '0mm', borderColor),
-      createLineDiv(`${borderWidth.left}mm`, `${height}mm`, '0mm', null, null, '0mm', borderColor),
-      createLineDiv(`${borderWidth.right}mm`, `${height}mm`, '0mm', '0mm', null, null, borderColor),
+      createLineDiv(
+        `${width}mm`,
+        `${borderWidth?.top ?? 0}mm`,
+        '0mm',
+        null,
+        null,
+        '0mm',
+        borderColor,
+      ),
+      createLineDiv(
+        `${width}mm`,
+        `${borderWidth?.bottom ?? 0}mm`,
+        null,
+        null,
+        '0mm',
+        '0mm',
+        borderColor,
+      ),
+      createLineDiv(
+        `${borderWidth?.left ?? 0}mm`,
+        `${height}mm`,
+        '0mm',
+        null,
+        null,
+        '0mm',
+        borderColor,
+      ),
+      createLineDiv(
+        `${borderWidth?.right ?? 0}mm`,
+        `${height}mm`,
+        '0mm',
+        '0mm',
+        null,
+        null,
+        borderColor,
+      ),
     ];
 
     lines.forEach((line) => rootElement.appendChild(line));

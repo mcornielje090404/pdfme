@@ -72,7 +72,7 @@ export const uiRender = async (arg: UIRenderProps<TextSchema>) => {
     fontKitFont,
     dynamicFontSize ?? schema.fontSize ?? DEFAULT_FONT_SIZE,
     schema.lineHeight ?? DEFAULT_LINE_HEIGHT,
-    schema.verticalAlignment ?? DEFAULT_VERTICAL_ALIGNMENT
+    schema.verticalAlignment ?? DEFAULT_VERTICAL_ALIGNMENT,
   );
 
   const topAdjustment = topAdj.toString();
@@ -159,7 +159,7 @@ export const uiRender = async (arg: UIRenderProps<TextSchema>) => {
                 fontKitFont,
                 dynamicFontSize ?? schema.fontSize ?? DEFAULT_FONT_SIZE,
                 schema.lineHeight ?? DEFAULT_LINE_HEIGHT,
-                schema.verticalAlignment ?? DEFAULT_VERTICAL_ALIGNMENT
+                schema.verticalAlignment ?? DEFAULT_VERTICAL_ALIGNMENT,
               );
             textBlock.style.paddingTop = `${newTopAdj}px`;
             textBlock.style.marginBottom = `${newBottomAdj}px`;
@@ -204,7 +204,7 @@ export const uiRender = async (arg: UIRenderProps<TextSchema>) => {
         (l: string, i: number) =>
           `<span style="letter-spacing:${
             String(value).length === i + 1 ? 0 : 'inherit'
-          };">${l}</span>`
+          };">${l}</span>`,
       )
       .join('');
 

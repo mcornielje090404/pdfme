@@ -48,7 +48,7 @@ const calcResizedHeadWidthPercentages = (arg: {
 const setBorder = (
   div: HTMLDivElement,
   borderPosition: 'Top' | 'Left' | 'Right' | 'Bottom',
-  arg: UIRenderProps<TableSchema>
+  arg: UIRenderProps<TableSchema>,
 ) => {
   div.style[`border${borderPosition}`] = `${String(arg.schema.tableStyles.borderWidth)}mm solid ${
     arg.schema.tableStyles.borderColor
@@ -61,7 +61,7 @@ const drawBorder = (
   colIndex: number,
   rowIndex: number,
   rowsLength: number,
-  arg: UIRenderProps<TableSchema>
+  arg: UIRenderProps<TableSchema>,
 ) => {
   const isFirstColumn = colIndex === 0;
   const isLastColumn = colIndex === Object.values(row.cells).length - 1;
@@ -184,7 +184,7 @@ export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
 
   const handleChangeEditingPosition = (
     newPosition: { rowIndex: number; colIndex: number },
-    editingPosition: { rowIndex: number; colIndex: number }
+    editingPosition: { rowIndex: number; colIndex: number },
   ) => {
     resetEditingPosition();
     editingPosition.rowIndex = newPosition.rowIndex;
@@ -288,7 +288,7 @@ export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
         e.preventDefault();
         const totalWidthMinusRemoved = schema.headWidthPercentages.reduce(
           (sum, width, j) => (j !== i ? sum + width : sum),
-          0
+          0,
         );
 
         // TODO Should also remove the deleted columnStyles when deleting

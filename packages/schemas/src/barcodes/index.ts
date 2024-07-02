@@ -10,7 +10,7 @@ const barcodes = BARCODE_TYPES.reduce(
     Object.assign(acc, {
       [type]: { pdf: pdfRender, ui: uiRender, propPanel: getPropPanelByBarcodeType(type) },
     }),
-  {} as Record<BarcodeTypes, Plugin<BarcodeSchema>>
+  {} as Record<BarcodeTypes, Plugin<BarcodeSchema>>,
 );
 
 export default barcodes;

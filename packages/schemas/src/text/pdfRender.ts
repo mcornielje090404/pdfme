@@ -48,12 +48,12 @@ const embedAndGetFontObj = async (arg: {
       return pdfDoc.embedFont(fontData, {
         subset: typeof v.subset === 'undefined' ? true : v.subset,
       });
-    })
+    }),
   );
 
   const fontObj = Object.keys(font).reduce(
     (acc, cur, i) => Object.assign(acc, { [cur]: fontValues[i] }),
-    {} as { [key: string]: PDFFont }
+    {} as { [key: string]: PDFFont },
   );
 
   _cache.set(pdfDoc, fontObj);

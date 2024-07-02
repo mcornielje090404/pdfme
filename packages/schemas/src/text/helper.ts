@@ -27,7 +27,7 @@ export const getBrowserVerticalFontAdjustments = (
   fontKitFont: FontKitFont,
   fontSize: number,
   lineHeight: number,
-  verticalAlignment: string
+  verticalAlignment: string,
 ) => {
   const { ascent, descent, unitsPerEm } = fontKitFont;
 
@@ -90,7 +90,7 @@ export const widthOfTextAtSize = (
   text: string,
   fontKitFont: FontKitFont,
   fontSize: number,
-  characterSpacing: number
+  characterSpacing: number,
 ) => {
   const { glyphs } = fontKitFont.layout(text);
   const scale = 1000 / fontKitFont.unitsPerEm;
@@ -110,7 +110,7 @@ const getCacheKey = (fontName: string) => `getFontKitFont-${fontName}`;
 export const getFontKitFont = async (
   fontName: string | undefined,
   font: Font,
-  _cache: Map<any, any>
+  _cache: Map<any, any>,
 ) => {
   const fntNm = fontName || getFallbackFontName(font);
   const cacheKey = getCacheKey(fntNm);
@@ -127,7 +127,7 @@ export const getFontKitFont = async (
   }
 
   const fontKitFont = fontkit.create(
-    fontData instanceof Buffer ? fontData : Buffer.from(fontData as ArrayBuffer)
+    fontData instanceof Buffer ? fontData : Buffer.from(fontData as ArrayBuffer),
   );
   _cache.set(cacheKey, fontKitFont);
 
@@ -163,9 +163,9 @@ const getOverPosition = (textLine: string, calcValues: FontWidthCalcValues) => {
  * However, this might need to be revisited for broader language support.
  */
 const isLineBreakableChar = (char: string) => {
-  const lineBreakableChars = [' ', '-', "\u2014", "\u2013"];
+  const lineBreakableChars = [' ', '-', '\u2014', '\u2013'];
   return lineBreakableChars.includes(char);
-}
+};
 
 /**
  * Gets the position of the split. Splits the exceeding line at
@@ -183,7 +183,7 @@ const getSplitPosition = (textLine: string, calcValues: FontWidthCalcValues) => 
   let overPosTmp = overPos - 1;
   while (overPosTmp >= 0) {
     if (isLineBreakableChar(textLine[overPosTmp])) {
-      return overPosTmp+1;
+      return overPosTmp + 1;
     }
     overPosTmp--;
   }
