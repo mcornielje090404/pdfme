@@ -1,5 +1,5 @@
 {
-  "name": "@pdfme/generator",
+  "name": "@pdfme-tables/generator",
   "version": "0.0.0",
   "sideEffects": false,
   "author": "hand-dot",
@@ -44,13 +44,13 @@
     "fontkit": "^2.0.2"
   },
   "devDependencies": {
-    "@pdfme/common": "file:../common",
-    "@pdfme/schemas": "file:../schemas",
+    "@pdfme-tables/common": "file:../common",
+    "@pdfme-tables/schemas": "file:../schemas",
     "pdf2json": "^2.0.0"
   },
   "peerDependencies": {
-    "@pdfme/common": "latest",
-    "@pdfme/schemas": "latest"
+    "@pdfme-tables/common": "latest",
+    "@pdfme-tables/schemas": "latest"
   },
   "jest": {
     "resolver": "ts-jest-resolver",

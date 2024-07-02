@@ -1,5 +1,5 @@
 {
-  "name": "@pdfme/ui",
+  "name": "@pdfme-tables/ui",
   "version": "0.0.0",
   "sideEffects": false,
   "author": "hand-dot",
@@ -46,8 +46,8 @@
     "react-selecto": "^1.12.0"
   },
   "devDependencies": {
-    "@pdfme/common": "file:../common",
-    "@pdfme/schemas": "file:../schemas",
+    "@pdfme-tables/common": "file:../common",
+    "@pdfme-tables/schemas": "file:../schemas",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@types/react": "^17.0.52",
@@ -65,8 +65,8 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "peerDependencies": {
-    "@pdfme/common": "latest",
-    "@pdfme/schemas": "latest"
+    "@pdfme-tables/common": "latest",
+    "@pdfme-tables/schemas": "latest"
   },
   "jest": {
     "setupFiles": [

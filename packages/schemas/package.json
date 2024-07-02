@@ -1,6 +1,6 @@
 {
-  "name": "pdfme-schemas-table-templates",
-  "version": "0.0.2",
+  "name": "@pdfme-tables/schemas",
+  "version": "0.0.0",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -45,7 +45,7 @@
     "fontkit": "^2.0.2"
   },
   "devDependencies": {
-    "@pdfme/common": "file:../common",
+    "@pdfme-tables/common": "file:../common",
     "@types/bwip-js": "^3.2.1",
     "@types/fontkit": "^2.0.4",
     "@types/pngjs": "^6.0.2",
@@ -53,7 +53,7 @@
     "pngjs": "^7.0.0"
   },
   "peerDependencies": {
-    "@pdfme/common": "latest"
+    "@pdfme-tables/common": "latest"
   },
   "jest": {
     "resolver": "ts-jest-resolver",
