@@ -311,21 +311,28 @@ export const template2SchemasList = async (_template: Template) => {
   return schemasList;
 };
 
-export const schemasList2template = (schemasList: SchemaForUI[][], basePdf: BasePdf): Template => ({
-  schemas: cloneDeep(schemasList).map((schema) =>
-    schema.reduce((acc, cur) => {
+export const schemasList2template = (schemasList: SchemaForUI[][], basePdf: BasePdf): Template => {
+  const schemaTemplate = cloneDeep(schemasList).map((schema) =>
+    schema.reduce((acc, cur, index) => {
       const k = cur.key;
       // @ts-ignore
       delete cur.id;
       // @ts-ignore
       delete cur.key;
-      acc[k] = cur;
+      acc[k] = {
+        ...cur,
+        sortOrder: index,
+      };
 
       return acc;
     }, {} as { [key: string]: Schema })
-  ),
-  basePdf,
-});
+  );
+
+  return {
+    schemas: schemaTemplate,
+    basePdf,
+  };
+};
 
 export const getUniqSchemaKey = (arg: {
   copiedSchemaKey: string;

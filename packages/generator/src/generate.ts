@@ -37,7 +37,16 @@ const generate = async (props: GenerateProps) => {
       template: dynamicTemplate,
       pdfDoc,
     });
-    const keys = dynamicTemplate.schemas.flatMap((schemaObj) => Object.keys(schemaObj));
+
+    const keys = dynamicTemplate.schemas.flatMap((schemaObj) => {
+      const entries = Object.entries(schemaObj);
+
+      const sortedEntries = entries.sort(
+        (a, b) => (a?.[1]?.sortOrder ?? 0) - (b?.[1]?.sortOrder ?? 0)
+      );
+
+      return sortedEntries.map(([key]) => key);
+    });
 
     for (let j = 0; j < basePages.length; j += 1) {
       const basePage = basePages[j];

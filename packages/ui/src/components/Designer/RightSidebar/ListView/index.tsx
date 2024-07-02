@@ -38,16 +38,18 @@ const ListView = (
   const [fieldNamesValue, setFieldNamesValue] = useState('');
   const height = getSidebarContentHeight(size.height);
 
+  const sortedSchemas = schemas.sort((a, b) => (a?.sortOrder ?? 0) - (b?.sortOrder ?? 0));
+
   const commitBulk = () => {
     const names = fieldNamesValue.split('\n');
-    if (names.length !== schemas.length) {
+    if (names.length !== sortedSchemas.length) {
       alert(i18n('errorBulkUpdateFieldName'));
     } else {
       changeSchemas(
         names.map((value, index) => ({
           key: 'key',
           value,
-          schemaId: schemas[index].id,
+          schemaId: sortedSchemas[index].id,
         }))
       );
       setIsBulkUpdateFieldNamesMode(false);
@@ -55,7 +57,7 @@ const ListView = (
   };
 
   const startBulk = () => {
-    setFieldNamesValue(schemas.map((s) => s.key).join('\n'));
+    setFieldNamesValue(sortedSchemas.map((s) => s.key).join('\n'));
     setIsBulkUpdateFieldNamesMode(true);
   };
 
@@ -82,14 +84,21 @@ const ListView = (
           />
         ) : (
           <SelectableSortableContainer
-            schemas={schemas}
+            schemas={sortedSchemas}
             hoveringSchemaId={hoveringSchemaId}
             onChangeHoveringSchemaId={onChangeHoveringSchemaId}
             onSortEnd={onSortEnd}
             onEdit={onEdit}
           />
         )}
-        <div style={{ paddingTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <div
+          style={{
+            paddingTop: '0.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+          }}
+        >
           {isBulkUpdateFieldNamesMode ? (
             <>
               <Button size="small" type="text" onClick={commitBulk}>

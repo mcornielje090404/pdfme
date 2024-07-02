@@ -65,9 +65,8 @@ export const Dict = z.object({
   'schemas.table.headStyle': z.string(),
   'schemas.table.bodyStyle': z.string(),
   'schemas.table.columnStyle': z.string(),
-  'schemas.table.createColumn': z.string(),
-  'schemas.table.createRow': z.string(),
 });
+
 export const Mode = z.enum(['viewer', 'form', 'designer']);
 
 export const ColorType = z.enum(['rgb', 'cmyk']).optional();
@@ -85,6 +84,7 @@ export const Schema = z
     rotate: z.number().optional(),
     opacity: z.number().optional(),
     readOnly: z.boolean().optional(),
+    sortOrder: z.number().optional(),
   })
   .passthrough();
 
