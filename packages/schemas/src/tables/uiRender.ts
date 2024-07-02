@@ -175,7 +175,7 @@ const resetEditingPosition = () => {
 };
 
 export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
-  const { rootElement, onChange, schema, value, mode } = arg;
+  const { rootElement, onChange, schema, value, mode, theme } = arg;
   const body = getBody(value);
   const bodyWidthRange = getBodyWithRange(value, schema.__bodyRange);
   const table = await createSingleTable(bodyWidthRange, arg);
@@ -223,6 +223,8 @@ export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
       addRowButton.style.position = 'absolute';
       addRowButton.style.top = `${table.getHeight()}mm`;
       addRowButton.style.left = 'calc(50% - 15px)';
+      addRowButton.style.color = theme.colorText ?? '#FFFFFF';
+      addRowButton.style.background = theme.colorPrimary ?? '#EFEFEF';
       addRowButton.innerText = '+';
       addRowButton.onclick = () => {
         const newRow = Array(schema.head.length).fill('') as string[];
@@ -241,6 +243,8 @@ export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
       removeRowButton.style.top = `${offsetY - px2mm(30)}mm`;
       removeRowButton.style.right = '-30px';
       removeRowButton.innerText = '-';
+      removeRowButton.style.color = theme.colorText ?? '#FFFFFF';
+      removeRowButton.style.background = theme.colorPrimary ?? '#EFEFEF';
       removeRowButton.onclick = () => {
         const newTableBody = body.filter((_, j) => j !== i + (schema.__bodyRange?.start ?? 0));
         onChange({ key: 'content', value: JSON.stringify(newTableBody) });
@@ -257,6 +261,8 @@ export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
     addColumnButton.style.top = `${table.getHeadHeight() - px2mm(30)}mm`;
     addColumnButton.style.right = '-30px';
     addColumnButton.innerText = '+';
+    addColumnButton.style.color = theme.colorText ?? '#FFFFFF';
+    addColumnButton.style.background = theme.colorPrimary ?? '#EFEFEF';
     addColumnButton.onclick = (e) => {
       e.preventDefault();
       const newColumnWidthPercentage = 25;
@@ -284,6 +290,8 @@ export const uiRender = async (arg: UIRenderProps<TableSchema>) => {
       removeColumnButton.style.top = '-30px';
       removeColumnButton.style.left = `${offsetX - px2mm(30)}mm`;
       removeColumnButton.innerText = '-';
+      removeColumnButton.style.color = theme.colorText ?? '#FFFFFF';
+      removeColumnButton.style.background = theme.colorPrimary ?? '#EFEFEF';
       removeColumnButton.onclick = (e) => {
         e.preventDefault();
         const totalWidthMinusRemoved = schema.headWidthPercentages.reduce(
