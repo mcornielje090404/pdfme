@@ -170,7 +170,7 @@ const imageSchema: Plugin<ImageSchema> = {
       input.addEventListener('change', (event: Event) => {
         const changeEvent = event as unknown as ChangeEvent<HTMLInputElement>;
         readFile(changeEvent.target.files).then(
-          (result) => onChange && onChange({ key: 'content', value: result as string })
+          (result) => onChange && onChange({ key: 'content', value: result as string }),
         );
       });
       input.addEventListener('blur', () => stopEditing && stopEditing());

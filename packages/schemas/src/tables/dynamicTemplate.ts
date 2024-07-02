@@ -3,6 +3,7 @@ import { createMultiTables, createSingleTable } from './tableHelper';
 import { cloneDeep } from '../utils';
 import { getBodyWithRange, getBody } from './helper.js';
 import { TableSchema } from './types';
+
 export const modifyTemplateForTable = async (arg: {
   template: Template;
   input: Record<string, string>;
@@ -70,7 +71,7 @@ export const getDynamicHeightForTable = async (
     basePdf: BasePdf;
     options: CommonOptions;
     _cache: Map<any, any>;
-  }
+  },
 ): Promise<number> => {
   if (args.schema.type !== 'table') return Promise.resolve(args.schema.height);
   const schema = args.schema as TableSchema;

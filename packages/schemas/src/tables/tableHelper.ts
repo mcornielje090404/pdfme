@@ -51,9 +51,11 @@ function parseSection(
   sectionRows: string[][],
   columns: Column[],
   styleProps: StylesProps,
-  fallbackFontName: string
+  fallbackFontName: string,
 ): Row[] {
-  const rowSpansLeftForColumn: { [key: string]: { left: number; times: number } } = {};
+  const rowSpansLeftForColumn: {
+    [key: string]: { left: number; times: number };
+  } = {};
   const result = sectionRows.map((rawRow, rowIndex) => {
     let skippedRowForRowSpans = 0;
     const cells: { [key: string]: Cell } = {};
@@ -67,6 +69,7 @@ function parseSection(
       ) {
         if (columnSpansLeft === 0) {
           let rawCell;
+
           if (Array.isArray(rawRow)) {
             rawCell = rawRow[column.index - colSpansAdded - skippedRowForRowSpans];
           } else {
@@ -112,7 +115,7 @@ function cellStyles(
   column: Column,
   rowIndex: number,
   styles: StylesProps,
-  fallbackFontName: string
+  fallbackFontName: string,
 ) {
   let sectionStyles;
   if (sectionName === 'head') {
@@ -149,25 +152,25 @@ function cellStyles(
 
 function mapCellStyle(style: CellStyle): Partial<Styles> {
   return {
-    fontName: style.fontName,
-    alignment: style.alignment,
-    verticalAlignment: style.verticalAlignment,
-    fontSize: style.fontSize,
-    lineHeight: style.lineHeight,
-    characterSpacing: style.characterSpacing,
-    backgroundColor: style.backgroundColor,
+    fontName: style?.fontName,
+    alignment: style?.alignment,
+    verticalAlignment: style?.verticalAlignment,
+    fontSize: style?.fontSize,
+    lineHeight: style?.lineHeight,
+    characterSpacing: style?.characterSpacing,
+    backgroundColor: style?.backgroundColor,
     // ---
-    textColor: style.fontColor,
-    lineColor: style.borderColor,
-    lineWidth: style.borderWidth,
-    cellPadding: style.padding,
+    textColor: style?.fontColor,
+    lineColor: style?.borderColor,
+    lineWidth: style?.borderWidth,
+    cellPadding: style?.padding,
   };
 }
 
 function createTableWithAvailableHeight(
   tableBody: Row[],
   availableHeight: number,
-  args: CreateTableArgs
+  args: CreateTableArgs,
 ) {
   let limit = availableHeight;
   const newTableBody: string[][] = [];
@@ -187,16 +190,17 @@ function createTableWithAvailableHeight(
 }
 
 function getTableOptions(schema: TableSchema, body: string[][]): UserOptions {
-  const columnStylesWidth = schema.headWidthPercentages.reduce(
-    (acc, cur, i) => ({ ...acc, [i]: { cellWidth: schema.width * (cur / 100) } }),
-    {} as Record<number, Partial<Styles>>
+  const columnStylesWidth = schema?.headWidthPercentages?.reduce(
+    (acc, cur, i) => ({
+      ...acc,
+      [i]: { cellWidth: schema.width * (cur / 100) },
+    }),
+    {},
   );
-
-  const columnStylesAlignment = Object.entries(schema.columnStyles.alignment || {}).reduce(
+  const columnStylesAlignment = Object.entries(schema?.columnStyles?.alignment || {}).reduce(
     (acc, [key, value]) => ({ ...acc, [key]: { alignment: value } }),
-    {} as Record<number, Partial<Styles>>
+    {},
   );
-
   const allKeys = new Set([
     ...Object.keys(columnStylesWidth).map(Number),
     ...Object.keys(columnStylesAlignment).map(Number),
@@ -205,7 +209,7 @@ function getTableOptions(schema: TableSchema, body: string[][]): UserOptions {
     const widthStyle = columnStylesWidth[key] || {};
     const alignmentStyle = columnStylesAlignment[key] || {};
     return { ...acc, [key]: { ...widthStyle, ...alignmentStyle } };
-  }, {} as Record<number, Partial<Styles>>);
+  }, {});
 
   return {
     head: [schema.head],
@@ -213,11 +217,13 @@ function getTableOptions(schema: TableSchema, body: string[][]): UserOptions {
     showHead: schema.showHead,
     startY: schema.position.y,
     tableWidth: schema.width,
-    tableLineColor: schema.tableStyles.borderColor,
-    tableLineWidth: schema.tableStyles.borderWidth,
+    tableLineColor: schema?.tableStyles?.borderColor,
+    tableLineWidth: schema?.tableStyles?.borderWidth,
     headStyles: mapCellStyle(schema.headStyles),
     bodyStyles: mapCellStyle(schema.bodyStyles),
-    alternateRowStyles: { backgroundColor: schema.bodyStyles.alternateBackgroundColor },
+    alternateRowStyles: {
+      backgroundColor: schema?.bodyStyles?.alternateBackgroundColor,
+    },
     columnStyles,
     margin: { top: 0, right: 0, left: schema.position.x, bottom: 0 },
   };
@@ -255,29 +261,23 @@ function parseInput(schema: TableSchema, body: string[][]): TableInput {
   const options = getTableOptions(schema, body);
   const styles = parseStyles(options);
   const settings = {
-    startY: options.startY,
-    margin: options.margin,
-    tableWidth: options.tableWidth,
-    showHead: options.showHead,
-    tableLineWidth: options.tableLineWidth ?? 0,
-    tableLineColor: options.tableLineColor ?? '',
+    startY: options?.startY,
+    margin: options?.margin,
+    tableWidth: options?.tableWidth,
+    showHead: options?.showHead,
+    tableLineWidth: options?.tableLineWidth ?? 0,
+    tableLineColor: options?.tableLineColor ?? '',
   };
-
   const content = parseContent4Input(options);
-
   return { content, styles, settings };
 }
 
 export function createSingleTable(body: string[][], args: CreateTableArgs) {
-  const { options, _cache, basePdf } = args;
-  if (!isBlankPdf(basePdf)) throw new Error('[@pdfme/schema/table] Blank PDF is not supported');
+  const { options, _cache } = args;
 
   const input = parseInput(args.schema as TableSchema, body);
-
   const font = options.font || getDefaultFont();
-
   const fallbackFontName = getFallbackFontName(font);
-
   const content = parseContent4Table(input, fallbackFontName);
 
   return Table.create({ input, content, font, _cache });
@@ -287,6 +287,7 @@ export async function createMultiTables(body: string[][], args: CreateTableArgs)
   const { basePdf, schema } = args;
 
   if (!isBlankPdf(basePdf)) throw new Error('[@pdfme/schema/table] Blank PDF is not supported');
+
   const pageHeight = basePdf.height;
   const paddingBottom = basePdf.padding[2];
   const paddingTop = basePdf.padding[0];
