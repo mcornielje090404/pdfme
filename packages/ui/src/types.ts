@@ -1,4 +1,4 @@
-import type { SchemaForUI, Size, ChangeSchemas } from '@pdfme/common';
+import type { SchemaForUI, Size, ChangeSchemas } from '@pdfme-tables/common';
 
 export type SidebarProps = {
   height: number;

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Template, checkTemplate, getInputFromTemplate } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
+import { Template, checkTemplate, getInputFromTemplate } from '@pdfme-tables/common';
+import { generate } from '@pdfme-tables/generator';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { text, image, barcodes } from '@pdfme/schemas';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
 import { getFont, deNormalizeDatas, normalizeDatas } from '../libs/helper';
 import { useViewer } from '../hooks';
 import DemoAppHeader from './DemoAppHeader';
@@ -59,7 +59,7 @@ const DemoAppGrid = (props: Props) => {
       template,
       plugins: { text, image, ...barcodes },
       inputs,
-      options: { font }
+      options: { font },
     });
     const t1 = performance.now();
 

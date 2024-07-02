@@ -1,6 +1,11 @@
 import FormRender, { useForm } from 'form-render';
 import React, { useContext, useEffect, useState } from 'react';
-import type { Dict, SchemaForUI, PropPanelWidgetProps, PropPanelSchema } from '@pdfme/common';
+import type {
+  Dict,
+  SchemaForUI,
+  PropPanelWidgetProps,
+  PropPanelSchema,
+} from '@pdfme-tables/common';
 import type { SidebarProps } from '../../../../types';
 import { MenuOutlined } from '@ant-design/icons';
 import { I18nContext, PluginsRegistry, OptionsContext } from '../../../../contexts';
@@ -206,7 +211,7 @@ Check this document: https://pdfme.com/docs/custom-schemas`);
         style={{
           height: getSidebarContentHeight(size.height),
           overflowY: 'auto',
-          overflowX: 'hidden'
+          overflowX: 'hidden',
         }}
       >
         <FormRender

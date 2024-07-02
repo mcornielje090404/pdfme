@@ -21,9 +21,9 @@ Next, import the required schemas from `@pdfme/schemas` to `@pdfme/generator` an
 The following code shows an example of importing QR code and image schemas from `@pdfme/generator` and `@pdfme/ui`.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { text, image, barcodes } from '@pdfme/schemas';
-import { generate } from '@pdfme/generator';
+import type { Template } from '@pdfme-tables/common';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
+import { generate } from '@pdfme-tables/generator';
 
 const template: Template = {
   // skip... you can use text, image, qrcode schema type in template.
@@ -47,9 +47,9 @@ const pdf = await generate({
 In this `@pdfme/ui` example, we're using the Designer, but you can load plugins in the Form and Viewer in the same way.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { text, image, barcodes } from '@pdfme/schemas';
-import { Designer } from '@pdfme/ui';
+import type { Template } from '@pdfme-tables/common';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
+import { Designer } from '@pdfme-tables/ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
@@ -146,7 +146,6 @@ Specifically, it should be possible to input the signature using [signature_pad]
 
 - Demo: https://playground.pdfme.com/
 - Code: [pdfme-playground/src/plugins/signature.ts](https://github.com/pdfme/pdfme-playground/blob/main/src/plugins/signature.ts)
-
 
 ### Caveats for writing Custom Schemas
 

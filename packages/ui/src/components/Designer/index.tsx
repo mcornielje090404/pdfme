@@ -9,7 +9,7 @@ import {
   Size,
   isBlankPdf,
   px2mm,
-} from '@pdfme/common';
+} from '@pdfme-tables/common';
 import { DndContext } from '@dnd-kit/core';
 import RightSidebar from './RightSidebar/index';
 import LeftSidebar from './LeftSidebar';
@@ -38,7 +38,7 @@ const scaleDragPosAdjustment = (adjustment: number, scale: number): number => {
   if (scale > 1) return adjustment * (scale - 1);
   if (scale < 1) return adjustment * -(1 - scale);
   return 0;
-}
+};
 
 const TemplateEditor = ({
   template,
@@ -51,8 +51,8 @@ const TemplateEditor = ({
   onSaveTemplate: (t: Template) => void;
   onChangeTemplate: (t: Template) => void;
 } & {
-  onChangeTemplate: (t: Template) => void 
-  onPageCursorChange: (newPageCursor: number) => void
+  onChangeTemplate: (t: Template) => void;
+  onPageCursorChange: (newPageCursor: number) => void;
 }) => {
   const past = useRef<SchemaForUI[][]>([]);
   const future = useRef<SchemaForUI[][]>([]);
@@ -70,8 +70,11 @@ const TemplateEditor = ({
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [prevTemplate, setPrevTemplate] = useState<Template | null>(null);
 
-  const { backgrounds, pageSizes, scale, error, refresh } =
-    useUIPreProcessor({ template, size, zoomLevel });
+  const { backgrounds, pageSizes, scale, error, refresh } = useUIPreProcessor({
+    template,
+    size,
+    zoomLevel,
+  });
 
   const onEdit = (targets: HTMLElement[]) => {
     setActiveElements(targets);
@@ -90,7 +93,7 @@ const TemplateEditor = ({
     pageCursor,
     onChangePageCursor: (p) => {
       setPageCursor(p);
-      onPageCursorChange(p)
+      onPageCursorChange(p);
       onEditEnd();
     },
   });
@@ -157,18 +160,29 @@ const TemplateEditor = ({
   }, []);
 
   const addSchema = (defaultSchema: Schema) => {
-    const [paddingTop, paddingRight, paddingBottom, paddingLeft] = isBlankPdf(template.basePdf) ? template.basePdf.padding : [0, 0, 0, 0];
+    const [paddingTop, paddingRight, paddingBottom, paddingLeft] = isBlankPdf(template.basePdf)
+      ? template.basePdf.padding
+      : [0, 0, 0, 0];
     const pageSize = pageSizes[pageCursor];
 
-    const ensureMiddleValue = (min: number, value: number, max: number) => Math.min(Math.max(min, value), max)
+    const ensureMiddleValue = (min: number, value: number, max: number) =>
+      Math.min(Math.max(min, value), max);
 
     const s = {
       id: uuid(),
       key: `${i18n('field')}${schemasList[pageCursor].length + 1}`,
       ...defaultSchema,
       position: {
-        x: ensureMiddleValue(paddingLeft, defaultSchema.position.x, pageSize.width - paddingRight - defaultSchema.width),
-        y: ensureMiddleValue(paddingTop, defaultSchema.position.y, pageSize.height - paddingBottom - defaultSchema.height),
+        x: ensureMiddleValue(
+          paddingLeft,
+          defaultSchema.position.x,
+          pageSize.width - paddingRight - defaultSchema.width
+        ),
+        y: ensureMiddleValue(
+          paddingTop,
+          defaultSchema.position.y,
+          pageSize.height - paddingBottom - defaultSchema.height
+        ),
       },
     } as SchemaForUI;
 
@@ -199,7 +213,8 @@ const TemplateEditor = ({
     setTimeout(
       () =>
         canvasRef.current &&
-        ((canvasRef.current.scrollTop = getPagesScrollTopByIndex(pageSizes, newPageCursor, scale)), 0)
+        ((canvasRef.current.scrollTop = getPagesScrollTopByIndex(pageSizes, newPageCursor, scale)),
+        0)
     );
   };
 
@@ -247,13 +262,14 @@ const TemplateEditor = ({
           const dragStartLeft = active.rect.current.initial?.left || 0;
           const dragStartTop = active.rect.current.initial?.top || 0;
 
-          const canvasLeftOffsetFromPageCorner = pageRect.left - dragStartLeft + scaleDragPosAdjustment(20, scale);
+          const canvasLeftOffsetFromPageCorner =
+            pageRect.left - dragStartLeft + scaleDragPosAdjustment(20, scale);
           const canvasTopOffsetFromPageCorner = pageRect.top - dragStartTop;
 
           const moveY = (event.delta.y - canvasTopOffsetFromPageCorner) / scale;
           const moveX = (event.delta.x - canvasLeftOffsetFromPageCorner) / scale;
 
-          const position = { x: px2mm(Math.max(0, moveX)), y: px2mm(Math.max(0, moveY)) }
+          const position = { x: px2mm(Math.max(0, moveX)), y: px2mm(Math.max(0, moveY)) };
 
           addSchema({ ...(active.data.current as Schema), position });
         }}
@@ -289,7 +305,7 @@ const TemplateEditor = ({
           schemas={schemasList[pageCursor] ?? []}
           changeSchemas={changeSchemas}
           onSortEnd={onSortEnd}
-          onEdit={id => {
+          onEdit={(id) => {
             const editingElem = document.getElementById(id);
             editingElem && onEdit([editingElem]);
           }}

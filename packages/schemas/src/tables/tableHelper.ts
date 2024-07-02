@@ -5,7 +5,7 @@ import {
   CommonOptions,
   getDefaultFont,
   getFallbackFontName,
-} from '@pdfme/common';
+} from '@pdfme-tables/common';
 import type {
   TableSchema,
   CellStyle,
@@ -51,7 +51,7 @@ function parseSection(
   sectionRows: string[][],
   columns: Column[],
   styleProps: StylesProps,
-  fallbackFontName: string,
+  fallbackFontName: string
 ): Row[] {
   const rowSpansLeftForColumn: {
     [key: string]: { left: number; times: number };
@@ -115,7 +115,7 @@ function cellStyles(
   column: Column,
   rowIndex: number,
   styles: StylesProps,
-  fallbackFontName: string,
+  fallbackFontName: string
 ) {
   let sectionStyles;
   if (sectionName === 'head') {
@@ -170,7 +170,7 @@ function mapCellStyle(style: CellStyle): Partial<Styles> {
 function createTableWithAvailableHeight(
   tableBody: Row[],
   availableHeight: number,
-  args: CreateTableArgs,
+  args: CreateTableArgs
 ) {
   let limit = availableHeight;
   const newTableBody: string[][] = [];
@@ -195,12 +195,14 @@ function getTableOptions(schema: TableSchema, body: string[][]): UserOptions {
       ...acc,
       [i]: { cellWidth: schema.width * (cur / 100) },
     }),
-    {},
-  );
+    {}
+  ) as Record<number, { cellWidth: number }>;
+
   const columnStylesAlignment = Object.entries(schema?.columnStyles?.alignment || {}).reduce(
     (acc, [key, value]) => ({ ...acc, [key]: { alignment: value } }),
-    {},
-  );
+    {}
+  ) as Record<string, { alignment: string }>;
+
   const allKeys = new Set([
     ...Object.keys(columnStylesWidth).map(Number),
     ...Object.keys(columnStylesAlignment).map(Number),

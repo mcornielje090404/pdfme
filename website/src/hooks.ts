@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Template } from '@pdfme/common';
-import type { Form, Viewer } from '@pdfme/ui';
-import { text, image, barcodes } from '@pdfme/schemas';
+import type { Template } from '@pdfme-tables/common';
+import type { Form, Viewer } from '@pdfme-tables/ui';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
 import { getFont } from './libs/helper';
 
 const useForceUpdate = () => {

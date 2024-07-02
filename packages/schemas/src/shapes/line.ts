@@ -1,4 +1,4 @@
-import type { Schema, Plugin, PDFRenderProps, UIRenderProps } from '@pdfme/common';
+import type { Schema, Plugin, PDFRenderProps, UIRenderProps } from '@pdfme-tables/common';
 import { rotatePoint, convertForPdfLayoutProps, hex2PrintingColor } from '../utils.js';
 import { HEX_COLOR_PATTERN } from '../constants.js';
 

@@ -6,11 +6,11 @@ import {
   CodeOutlined,
   PreviewOutlined,
 } from '@mui/icons-material';
-import type { Template } from '@pdfme/common';
-import { getInputFromTemplate } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
-import { Designer } from '@pdfme/ui';
-import { text, image, barcodes } from '@pdfme/schemas';
+import type { Template } from '@pdfme-tables/common';
+import { getInputFromTemplate } from '@pdfme-tables/common';
+import { generate } from '@pdfme-tables/generator';
+import { Designer } from '@pdfme-tables/ui';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
 import Layout from '@theme/Layout';
 import {
   getSampleTemplate,
@@ -38,7 +38,7 @@ const TemplateDesign = () => {
 
   const modes = ['generator', 'designer', 'form', 'viewer'];
 
-  const [codeMode, setCodeMode] = useState<typeof modes[number]>('generator');
+  const [codeMode, setCodeMode] = useState<(typeof modes)[number]>('generator');
   const [codeModalOpen, setCodeModalOpen] = useState(false);
   const handleCodeModalOpen = () => setCodeModalOpen(true);
   const handleCodeModalClose = () => setCodeModalOpen(false);
@@ -98,11 +98,11 @@ ${e}`);
   };
 
   const generatePdf = async () => {
-    const inputs = getInputFromTemplate(template)
+    const inputs = getInputFromTemplate(template);
     const pdf = await generate({
       template,
       plugins: { text, image, qrcode: barcodes.qrcode },
-      inputs
+      inputs,
     });
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
     window.open(URL.createObjectURL(blob));

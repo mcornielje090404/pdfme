@@ -1,4 +1,4 @@
-import { Plugin, Schema, mm2pt } from '@pdfme/common';
+import { Plugin, Schema, mm2pt } from '@pdfme-tables/common';
 import { HEX_COLOR_PATTERN } from '../constants.js';
 import { hex2PrintingColor, convertForPdfLayoutProps } from '../utils.js';
 

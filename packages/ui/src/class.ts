@@ -16,8 +16,8 @@ import {
   checkInputs,
   checkUIOptions,
   checkPreviewProps,
-} from '@pdfme/common';
-import { builtInPlugins } from '@pdfme/schemas';
+} from '@pdfme-tables/common';
+import { builtInPlugins } from '@pdfme-tables/schemas';
 
 export abstract class BaseUIClass {
   protected domContainer!: HTMLElement | null;

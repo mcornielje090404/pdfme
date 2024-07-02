@@ -1,4 +1,4 @@
-import type { Schema } from '@pdfme/common';
+import type { Schema } from '@pdfme-tables/common';
 import type { Font as FontKitFont } from 'fontkit';
 
 export type ALIGNMENT = 'left' | 'center' | 'right';

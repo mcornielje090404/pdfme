@@ -1,4 +1,4 @@
-import { PDFRenderProps } from '@pdfme/common';
+import { PDFRenderProps } from '@pdfme-tables/common';
 import { convertForPdfLayoutProps } from '../utils.js';
 import type { BarcodeSchema } from './types';
 import { createBarCode, validateBarcodeInput } from './helper.js';
@@ -15,7 +15,7 @@ export const pdfRender = async (arg: PDFRenderProps<BarcodeSchema>) => {
   let image = _cache.get(inputBarcodeCacheKey);
   if (!image) {
     const imageBuf = await createBarCode(
-      Object.assign(schema, { type: schema.type, input: value }),
+      Object.assign(schema, { type: schema.type, input: value })
     );
     image = await pdfDoc.embedPng(imageBuf);
     _cache.set(inputBarcodeCacheKey, image);

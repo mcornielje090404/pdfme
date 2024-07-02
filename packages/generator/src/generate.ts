@@ -1,7 +1,7 @@
 import * as pdfLib from '@pdfme/pdf-lib';
-import type { GenerateProps } from '@pdfme/common';
-import { checkGenerateProps, getDynamicTemplate } from '@pdfme/common';
-import { modifyTemplateForTable, getDynamicHeightForTable } from '@pdfme/schemas';
+import type { GenerateProps } from '@pdfme-tables/common';
+import { checkGenerateProps, getDynamicTemplate } from '@pdfme-tables/common';
+import { modifyTemplateForTable, getDynamicHeightForTable } from '@pdfme-tables/schemas';
 import { insertPage, preprocessing, postProcessing, getEmbedPdfPages } from './helper.js';
 
 const generate = async (props: GenerateProps) => {

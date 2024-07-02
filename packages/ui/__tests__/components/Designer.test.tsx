@@ -5,18 +5,14 @@ import React from 'react';
 import { render, act, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Designer from '../../src/components/Designer/index';
-import {
-  I18nContext,
-  FontContext,
-  PluginsRegistry,
-} from '../../src/contexts';
+import { I18nContext, FontContext, PluginsRegistry } from '../../src/contexts';
 import { i18n } from '../../src/i18n';
 import { SELECTABLE_CLASSNAME } from '../../src/constants';
-import { getDefaultFont } from '@pdfme/common';
+import { getDefaultFont } from '@pdfme-tables/common';
 import { setupUIMock, getSampleTemplate } from '../assets/helper';
-import { text, image } from "@pdfme/schemas"
+import { text, image } from '@pdfme-tables/schemas';
 
-const plugins = { text, image, }
+const plugins = { text, image };
 
 test('Designer snapshot', async () => {
   setupUIMock();

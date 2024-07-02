@@ -7,11 +7,11 @@ import HomepageHeader from '../components/HomepageHeader';
 import Divider from '../components/Divider';
 import Code from '../components/Code';
 import GithubStar from '../components/GithubStar';
-import type { Template } from '@pdfme/common';
-import { getInputFromTemplate } from '@pdfme/common';
-import { text, image, barcodes } from '@pdfme/schemas';
-import { generate } from '@pdfme/generator';
-import type { Designer, Viewer, Form } from '@pdfme/ui';
+import type { Template } from '@pdfme-tables/common';
+import { getInputFromTemplate } from '@pdfme-tables/common';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
+import { generate } from '@pdfme-tables/generator';
+import type { Designer, Viewer, Form } from '@pdfme-tables/ui';
 import { getSampleTemplate, getGeneratorSampleCode } from '../libs/helper';
 
 export default function Home(): JSX.Element {
@@ -52,7 +52,7 @@ export default function Home(): JSX.Element {
         designer.current.onChangeTemplate(() => {
           designer.current.saveTemplate();
         });
-      })
+      });
     }
   }, [designerRef]);
 
@@ -66,7 +66,6 @@ export default function Home(): JSX.Element {
           inputs: getInputFromTemplate(template),
         });
       });
-
     }
 
     if (formRef.current) {
@@ -79,7 +78,7 @@ export default function Home(): JSX.Element {
         });
 
         form.current.onChangeInput(console.log);
-      })
+      });
     }
   }, [viewerRef, formRef, mode]);
 

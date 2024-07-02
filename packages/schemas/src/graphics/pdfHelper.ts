@@ -1,4 +1,4 @@
-import { Schema, UIRenderProps } from '@pdfme/common';
+import { Schema, UIRenderProps } from '@pdfme-tables/common';
 import { getCacheKey } from './cacheKey';
 import { ImageSchema } from './image';
 

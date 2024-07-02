@@ -1,4 +1,4 @@
-import { b64toUint8Array } from '@pdfme/common';
+import { b64toUint8Array } from '@pdfme-tables/common';
 import bwipjs, { RenderOptions } from 'bwip-js';
 import { Buffer } from 'buffer';
 import { BARCODE_TYPES, DEFAULT_BARCODE_INCLUDETEXT } from './constants.js';
@@ -63,7 +63,7 @@ export const validateBarcodeInput = (type: BarcodeTypes, input: string) => {
     // 有効文字は漢字、ひらがな、カタカナ以外。
     // https://qiita.com/graminume/items/2ac8dd9c32277fa9da64
     return !input.match(
-      /([\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]|[Ａ-Ｚａ-ｚ０-９！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝〜　])+/,
+      /([\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]|[Ａ-Ｚａ-ｚ０-９！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝〜　])+/
     );
   }
   if (type === 'nw7') {

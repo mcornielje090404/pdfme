@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, ReactNode, useRef } from 'react';
-import { Dict, ZOOM, UIRenderProps, SchemaForUI, BasePdf, Schema } from '@pdfme/common';
+import { Dict, ZOOM, UIRenderProps, SchemaForUI, BasePdf, Schema } from '@pdfme-tables/common';
 import { theme as antdTheme } from 'antd';
 import { SELECTABLE_CLASSNAME } from '../constants';
 import { PluginsRegistry, OptionsContext, I18nContext } from '../contexts';

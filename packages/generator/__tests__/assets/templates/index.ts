@@ -1,4 +1,4 @@
-import { Template } from '@pdfme/common';
+import { Template } from '@pdfme-tables/common';
 
 const レターパック = require('./レターパック.json') as Template;
 const レターパックライト = require('./レターパックライト.json') as Template;

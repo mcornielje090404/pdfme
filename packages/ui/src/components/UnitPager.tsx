@@ -1,5 +1,5 @@
 import React from 'react';
-import { Size } from '@pdfme/common';
+import { Size } from '@pdfme-tables/common';
 import { theme, Typography, Button } from 'antd';
 import {
   LeftOutlined,

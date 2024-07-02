@@ -1,9 +1,9 @@
 import type { ChangeEvent } from 'react';
 import type { PDFImage, PDFEmbeddedPage } from '@pdfme/pdf-lib';
-import type { Plugin } from '@pdfme/common';
-import type { PDFRenderProps, Schema } from '@pdfme/common';
+import type { Plugin } from '@pdfme-tables/common';
+import type { PDFRenderProps, Schema } from '@pdfme-tables/common';
 import type * as CSS from 'csstype';
-import { UIRenderProps, px2mm } from '@pdfme/common';
+import { UIRenderProps, px2mm } from '@pdfme-tables/common';
 import { convertForPdfLayoutProps, addAlphaToHex, isEditable, readFile } from '../utils.js';
 import { DEFAULT_OPACITY } from '../constants.js';
 import { getImageDimension } from './imagehelper.js';
@@ -170,7 +170,7 @@ const imageSchema: Plugin<ImageSchema> = {
       input.addEventListener('change', (event: Event) => {
         const changeEvent = event as unknown as ChangeEvent<HTMLInputElement>;
         readFile(changeEvent.target.files).then(
-          (result) => onChange && onChange({ key: 'content', value: result as string }),
+          (result) => onChange && onChange({ key: 'content', value: result as string })
         );
       });
       input.addEventListener('blur', () => stopEditing && stopEditing());

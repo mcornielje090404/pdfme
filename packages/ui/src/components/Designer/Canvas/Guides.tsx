@@ -1,6 +1,6 @@
 import React, { Ref } from 'react';
 import Guides from '@scena/react-guides';
-import { ZOOM, Size } from '@pdfme/common';
+import { ZOOM, Size } from '@pdfme-tables/common';
 import { RULER_HEIGHT } from '../../../constants';
 
 const guideStyle = (

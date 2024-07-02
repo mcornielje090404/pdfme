@@ -1,6 +1,6 @@
 import type * as CSS from 'csstype';
 import { cmyk, degrees, degreesToRadians, rgb } from '@pdfme/pdf-lib';
-import { Schema, mm2pt, Mode, isHexValid, ColorType } from '@pdfme/common';
+import { Schema, mm2pt, Mode, isHexValid, ColorType } from '@pdfme-tables/common';
 
 export const convertForPdfLayoutProps = ({
   schema,
@@ -44,7 +44,7 @@ export const convertForPdfLayoutProps = ({
 export const rotatePoint = (
   point: { x: number; y: number },
   pivot: { x: number; y: number },
-  angleDegrees: number,
+  angleDegrees: number
 ): { x: number; y: number } => {
   const angleRadians = degreesToRadians(angleDegrees);
 

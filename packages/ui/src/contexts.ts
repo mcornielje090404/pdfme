@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { i18n } from './i18n';
-import { getDefaultFont, Plugins, UIOptions } from '@pdfme/common';
-import { builtInPlugins } from '@pdfme/schemas';
+import { getDefaultFont, Plugins, UIOptions } from '@pdfme-tables/common';
+import { builtInPlugins } from '@pdfme-tables/schemas';
 
 export const I18nContext = createContext(i18n);
 

@@ -1,6 +1,6 @@
 import { Button, Form } from 'antd';
 import React from 'react';
-import type { PropPanelWidgetProps } from '@pdfme/common';
+import type { PropPanelWidgetProps } from '@pdfme-tables/common';
 import { round } from '../../../../helper';
 
 const svgBaseProp = {

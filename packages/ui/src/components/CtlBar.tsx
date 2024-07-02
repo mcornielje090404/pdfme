@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Size } from '@pdfme/common';
+import { Size } from '@pdfme-tables/common';
 import {
   MinusOutlined,
   PlusOutlined,

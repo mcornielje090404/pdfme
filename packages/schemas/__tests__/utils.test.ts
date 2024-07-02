@@ -1,4 +1,4 @@
-import { Schema, mm2pt, pt2mm } from '@pdfme/common';
+import { Schema, mm2pt, pt2mm } from '@pdfme-tables/common';
 import { convertForPdfLayoutProps, rotatePoint, hex2RgbColor } from '../src/utils';
 
 describe('hex2RgbColor', () => {

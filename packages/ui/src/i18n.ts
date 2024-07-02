@@ -1,4 +1,4 @@
-import type { Lang, Dict } from '@pdfme/common';
+import type { Lang, Dict } from '@pdfme-tables/common';
 import { DEFAULT_LANG } from './constants.js';
 
 const dictEn: { [key in keyof Dict]: string } = {
@@ -609,19 +609,21 @@ const dictFr: { [key in keyof Dict]: string } = {
   rotate: 'Rotation',
   edit: 'Éditer',
   plsInputName: 'Veuillez saisir le nom',
-  fieldMustUniq:"Le nom du champ n'est pas unique",
+  fieldMustUniq: "Le nom du champ n'est pas unique",
   notUniq: '(Nombre non unique)',
   noKeyName: 'Pas de nom',
   fieldsList: 'Liste des champs',
   editField: 'Éditer le champ',
   type: 'Type',
-  errorOccurred:' Une erreur est survenue',
-  errorBulkUpdateFieldName: "Impossible de confirmer le changement car le nombre d'éléments a changé.",
+  errorOccurred: ' Une erreur est survenue',
+  errorBulkUpdateFieldName:
+    "Impossible de confirmer le changement car le nombre d'éléments a changé.",
   commitBulkUpdateFieldName: 'Confirmer les changements',
   bulkUpdateFieldName: 'Modifier les noms de champs en masse',
   addPageAfter: 'Ajouter une page après',
   removePage: 'Supprimer la page actuelle',
-  removePageConfirm: 'Êtes-vous sûr de vouloir supprimer cette page ? Cette action est irréversible.',
+  removePageConfirm:
+    'Êtes-vous sûr de vouloir supprimer cette page ? Cette action est irréversible.',
   hexColorPrompt: 'Veuillez entrer un code couleur hexadécimal valide.',
   'schemas.color': 'Couleur',
   'schemas.borderWidth': 'Largeur de la bordure',
@@ -654,7 +656,7 @@ const dictFr: { [key in keyof Dict]: string } = {
   'schemas.table.tableStyle': 'Style de tableau',
   'schemas.table.headStyle': "Style d'en-tête",
   'schemas.table.bodyStyle': 'Style de corps',
-  'schemas.table.columnStyle': 'Style de colonne'
+  'schemas.table.columnStyle': 'Style de colonne',
 };
 
 const dictionaries: { [key in Lang]: Dict } = {

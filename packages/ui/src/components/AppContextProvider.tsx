@@ -3,7 +3,7 @@ import { ConfigProvider as ThemeConfigProvider } from 'antd';
 import { I18nContext, FontContext, PluginsRegistry, OptionsContext } from '../contexts';
 import { i18n, getDict } from '../i18n';
 import { defaultTheme } from '../theme';
-import type { Dict, Plugins, Font, Lang, UIOptions } from '@pdfme/common';
+import type { Dict, Plugins, Font, Lang, UIOptions } from '@pdfme-tables/common';
 
 type Props = {
   children: React.ReactNode;

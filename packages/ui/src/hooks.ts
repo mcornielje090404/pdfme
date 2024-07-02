@@ -7,7 +7,7 @@ import {
   SchemaForUI,
   ChangeSchemas,
   isBlankPdf,
-} from '@pdfme/common';
+} from '@pdfme-tables/common';
 
 import {
   schemasList2template,

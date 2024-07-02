@@ -1,4 +1,4 @@
-import { Plugin, Schema } from '@pdfme/common';
+import { Plugin, Schema } from '@pdfme-tables/common';
 import { XMLValidator } from 'fast-xml-parser';
 import { convertForPdfLayoutProps, isEditable, addAlphaToHex, createErrorElm } from '../utils.js';
 

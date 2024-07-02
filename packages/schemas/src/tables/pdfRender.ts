@@ -1,5 +1,5 @@
 import type { TableSchema } from './types';
-import type { PDFRenderProps } from '@pdfme/common';
+import type { PDFRenderProps } from '@pdfme-tables/common';
 import { Cell, Table, Row, Column } from './classes';
 import { rectangle } from '../shapes/rectAndEllipse';
 import cell from './cell';
@@ -40,7 +40,7 @@ async function drawRow(
   table: Table,
   row: Row,
   cursor: Pos,
-  columns: Column[],
+  columns: Column[]
 ) {
   cursor.x = table.settings.margin.left;
   for (const column of columns) {
@@ -64,7 +64,7 @@ async function drawTableBorder(
   arg: PDFRenderProps<TableSchema>,
   table: Table,
   startPos: Pos,
-  cursor: Pos,
+  cursor: Pos
 ) {
   const lineWidth = table.settings.tableLineWidth;
   const lineColor = table.settings.tableLineColor;

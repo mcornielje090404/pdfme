@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
 import generate from '../src/generate';
 import { other, shape } from './assets/templates';
-import { getInputFromTemplate } from '@pdfme/common';
+import { getInputFromTemplate } from '@pdfme-tables/common';
 import {
   text,
   image,
@@ -11,7 +11,7 @@ import {
   readOnlyText,
   barcodes,
   readOnlySvg,
-} from '@pdfme/schemas';
+} from '@pdfme-tables/schemas';
 import { getFont, getPdf, getPdfTmpPath, getPdfAssertPath } from './utils';
 
 const signature = {
@@ -69,7 +69,9 @@ describe('generate integration test(other, shape)', () => {
         if (process.env.CI) {
           expect(execSeconds).toBeLessThan(PERFORMANCE_THRESHOLD);
         } else if (execSeconds >= PERFORMANCE_THRESHOLD) {
-          console.warn(`Warning: Execution time for ${key} is ${execSeconds} seconds, which is above the threshold of ${PERFORMANCE_THRESHOLD} seconds.`);
+          console.warn(
+            `Warning: Execution time for ${key} is ${execSeconds} seconds, which is above the threshold of ${PERFORMANCE_THRESHOLD} seconds.`
+          );
         }
 
         const tmpFile = getPdfTmpPath(`${key}.pdf`);

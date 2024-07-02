@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
 import generate from '../src/generate';
-import { Template, BLANK_PDF, Schema } from '@pdfme/common';
+import { Template, BLANK_PDF, Schema } from '@pdfme-tables/common';
 import { getFont, getPdf, getPdfTmpPath, getPdfAssertPath } from './utils';
 
 describe('generate integrate test', () => {

@@ -1,5 +1,5 @@
 import React, { useContext, forwardRef, ReactNode, Ref, useEffect } from 'react';
-import { Size } from '@pdfme/common';
+import { Size } from '@pdfme-tables/common';
 import { FontContext } from '../contexts';
 import { BACKGROUND_COLOR } from '../constants';
 import Spinner from './Spinner';

@@ -1,8 +1,8 @@
 import { writeFileSync } from 'fs';
 import generate from '../src/generate';
 import { textType } from './assets/templates';
-import {getInputFromTemplate} from "@pdfme/common"
-import { text, image, barcodes } from '@pdfme/schemas';
+import { getInputFromTemplate } from '@pdfme-tables/common';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
 import { getFont, getPdf, getPdfTmpPath, getPdfAssertPath } from './utils';
 
 const PERFORMANCE_THRESHOLD = parseFloat(process.env.PERFORMANCE_THRESHOLD || '2.5');
@@ -38,7 +38,9 @@ describe('generate integration test(slower)', () => {
         if (process.env.CI) {
           expect(execSeconds).toBeLessThan(PERFORMANCE_THRESHOLD);
         } else if (execSeconds >= PERFORMANCE_THRESHOLD) {
-          console.warn(`Warning: Execution time for ${key} is ${execSeconds} seconds, which is above the threshold of ${PERFORMANCE_THRESHOLD} seconds.`);
+          console.warn(
+            `Warning: Execution time for ${key} is ${execSeconds} seconds, which is above the threshold of ${PERFORMANCE_THRESHOLD} seconds.`
+          );
         }
 
         const tmpFile = getPdfTmpPath(`${key}.pdf`);

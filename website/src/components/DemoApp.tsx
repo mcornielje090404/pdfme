@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Template, checkTemplate, getInputFromTemplate } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
-import { text, image, barcodes } from '@pdfme/schemas';
+import { Template, checkTemplate, getInputFromTemplate } from '@pdfme-tables/common';
+import { generate } from '@pdfme-tables/generator';
+import { text, image, barcodes } from '@pdfme-tables/schemas';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
@@ -13,7 +13,6 @@ import DemoAppTemplateList from './DemoAppTemplateList';
 import DemoAppFormHeader from './DemoAppFormHeader';
 import DemoAppFooter from './DemoAppFooter';
 import Divider from './Divider';
-
 
 type Props = {
   title: string;
@@ -53,7 +52,7 @@ const DemoApp = (props: Props) => {
       template,
       plugins: { text, image, ...barcodes },
       inputs,
-      options: { font }
+      options: { font },
     });
     const t1 = performance.now();
 

@@ -4,7 +4,7 @@ import {
   PDFRenderProps,
   UIRenderProps,
   getFallbackFontName,
-} from '@pdfme/common';
+} from '@pdfme-tables/common';
 import { uiRender as textUiRender } from '../text/uiRender.js';
 import { pdfRender as textPdfRender } from '../text/pdfRender.js';
 import line from '../shapes/line.js';
@@ -19,7 +19,7 @@ const renderLine = async (
   schema: CellSchema,
   position: { x: number; y: number },
   width: number,
-  height: number,
+  height: number
 ) =>
   linePdfRender({
     ...arg,
@@ -45,7 +45,7 @@ const createLineDiv = (
   right: string | null,
   bottom: string | null,
   left: string | null,
-  borderColor: string,
+  borderColor: string
 ) => {
   const div = document.createElement('div');
   div.style.width = width;
@@ -86,7 +86,7 @@ const cellSchema: Plugin<CellSchema> = {
         schema,
         { x: position.x + width - (borderWidth?.right ?? 0), y: position.y },
         borderWidth?.right ?? 0,
-        height,
+        height
       ),
       // BOTTOM
       renderLine(
@@ -94,7 +94,7 @@ const cellSchema: Plugin<CellSchema> = {
         schema,
         { x: position.x, y: position.y + height - (borderWidth?.bottom ?? 0) },
         width,
-        borderWidth?.bottom ?? 0,
+        borderWidth?.bottom ?? 0
       ),
       // LEFT
       renderLine(arg, schema, { x: position.x, y: position.y }, borderWidth?.left ?? 0, height),
@@ -146,7 +146,7 @@ const cellSchema: Plugin<CellSchema> = {
         null,
         null,
         '0mm',
-        borderColor,
+        borderColor
       ),
       createLineDiv(
         `${width}mm`,
@@ -155,7 +155,7 @@ const cellSchema: Plugin<CellSchema> = {
         null,
         '0mm',
         '0mm',
-        borderColor,
+        borderColor
       ),
       createLineDiv(
         `${borderWidth?.left ?? 0}mm`,
@@ -164,7 +164,7 @@ const cellSchema: Plugin<CellSchema> = {
         null,
         null,
         '0mm',
-        borderColor,
+        borderColor
       ),
       createLineDiv(
         `${borderWidth?.right ?? 0}mm`,
@@ -173,7 +173,7 @@ const cellSchema: Plugin<CellSchema> = {
         '0mm',
         null,
         null,
-        borderColor,
+        borderColor
       ),
     ];
 

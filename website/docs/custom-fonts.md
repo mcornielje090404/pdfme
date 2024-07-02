@@ -11,7 +11,7 @@ You can use this feature to solve those issues.
 You can import from `@pdfme/common` as below.
 
 ```ts
-import type { Font } from '@pdfme/common';
+import type { Font } from '@pdfme-tables/common';
 ```
 
 The type of font is as follows.
@@ -25,6 +25,7 @@ type Font = {
   };
 };
 ```
+
 - `data`: If you register a `string` starting with `http`, it will be automatically fetched.Or set binary data directly like `Uint8Array | ArrayBuffer`
 - \*`fallback`: Setting it to true makes it the font to use if not set to a `fontName`. **Only one of the font objects must be set to true.**
 - \*`subset`: The default is true, but it can be set to false to set the font embedding to not subset. (This setting is for a bug in fontkit when embedding certain fonts with subsetting.)
@@ -50,8 +51,8 @@ Let's check out how to set font in the generator and ui packages.
 Set font as option in [generate](/docs/getting-started#generator) function
 
 ```ts
-import { Template, BLANK_PDF, Font } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
+import { Template, BLANK_PDF, Font } from '@pdfme-tables/common';
+import { generate } from '@pdfme-tables/generator';
 
 const font = {
   serif: {
@@ -112,7 +113,7 @@ The sample code is for [Designer](/docs/getting-started#designer), but the same 
 #### Setting font at instance initialization
 
 ```ts
-import { Designer } from '@pdfme/ui';
+import { Designer } from '@pdfme-tables/ui';
 
 const domContainer = document.getElementById('container');
 const template = {

@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 import { theme, Button } from 'antd';
 import { OnDrag, OnResize, OnClick, OnRotate } from 'react-moveable';
-import { ZOOM, SchemaForUI, Size, ChangeSchemas, BasePdf, isBlankPdf } from '@pdfme/common';
+import { ZOOM, SchemaForUI, Size, ChangeSchemas, BasePdf, isBlankPdf } from '@pdfme-tables/common';
 import { PluginsRegistry } from '../../../contexts';
 import { CloseOutlined } from '@ant-design/icons';
 import { RULER_HEIGHT, RIGHT_SIDEBAR_WIDTH } from '../../../constants';
@@ -25,9 +25,7 @@ import Guides from './Guides';
 import Mask from './Mask';
 import Padding from './Padding';
 
-
 const mm2px = (mm: number) => mm * 3.7795275591;
-
 
 const DELETE_BTN_ID = uuid();
 const fmt4Num = (prop: string) => Number(prop.replace('px', ''));
@@ -450,8 +448,9 @@ const Canvas = (props: Props, ref: Ref<HTMLDivElement>) => {
               changeSchemas(args.map(({ key, value }) => ({ key, value, schemaId: schema.id })));
             }}
             stopEditing={() => setEditing(false)}
-            outline={`1px ${hoveringSchemaId === schema.id ? 'solid' : 'dashed'} ${schema.readOnly && hoveringSchemaId !== schema.id ? 'transparent' : token.colorPrimary
-              }`}
+            outline={`1px ${hoveringSchemaId === schema.id ? 'solid' : 'dashed'} ${
+              schema.readOnly && hoveringSchemaId !== schema.id ? 'transparent' : token.colorPrimary
+            }`}
             scale={scale}
           />
         )}

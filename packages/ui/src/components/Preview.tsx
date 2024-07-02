@@ -1,6 +1,12 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import { Template, SchemaForUI, PreviewProps, Size, getDynamicTemplate } from '@pdfme/common';
-import { modifyTemplateForTable, getDynamicHeightForTable } from '@pdfme/schemas';
+import {
+  Template,
+  SchemaForUI,
+  PreviewProps,
+  Size,
+  getDynamicTemplate,
+} from '@pdfme-tables/common';
+import { modifyTemplateForTable, getDynamicHeightForTable } from '@pdfme-tables/schemas';
 import UnitPager from './UnitPager';
 import Root from './Root';
 import ErrorScreen from './ErrorScreen';
@@ -35,8 +41,11 @@ const Preview = ({
   const [zoomLevel, setZoomLevel] = useState(1);
   const [schemasList, setSchemasList] = useState<SchemaForUI[][]>([[]] as SchemaForUI[][]);
 
-  const { backgrounds, pageSizes, scale, error, refresh } =
-    useUIPreProcessor({ template, size, zoomLevel });
+  const { backgrounds, pageSizes, scale, error, refresh } = useUIPreProcessor({
+    template,
+    size,
+    zoomLevel,
+  });
 
   const isForm = Boolean(onChangeInput);
 
@@ -118,7 +127,9 @@ const Preview = ({
           backgrounds={backgrounds}
           renderSchema={({ schema, index }) => {
             const { key, readOnly } = schema;
-            const content = readOnly ? String(schema.content) || '' : String(input && input[key] || '');
+            const content = readOnly
+              ? String(schema.content) || ''
+              : String((input && input[key]) || '');
             return (
               <Renderer
                 key={schema.id}
@@ -152,7 +163,7 @@ const Preview = ({
                   if (isNeedInit) {
                     init(template);
                   }
-                  setSchemasList([...schemasList])
+                  setSchemasList([...schemasList]);
                 }}
                 outline={
                   isForm && !schema.readOnly ? `1px dashed ${token.colorPrimary}` : 'transparent'

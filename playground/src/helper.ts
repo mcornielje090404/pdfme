@@ -1,6 +1,6 @@
-import { Template, Font, checkTemplate, getInputFromTemplate } from '@pdfme/common';
-import { Form, Viewer, Designer } from '@pdfme/ui';
-import { generate } from '@pdfme/generator';
+import { Template, Font, checkTemplate, getInputFromTemplate } from '@pdfme-tables/common';
+import { Form, Viewer, Designer } from '@pdfme-tables/ui';
+import { generate } from '@pdfme-tables/generator';
 import {
   text,
   readOnlyText,
@@ -13,7 +13,7 @@ import {
   tableBeta,
   rectangle,
   ellipse,
-} from '@pdfme/schemas';
+} from '@pdfme-tables/schemas';
 import plugins from './plugins';
 
 const fontObjList = [

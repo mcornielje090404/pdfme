@@ -1,4 +1,4 @@
-import { Template, Font, checkTemplate, getInputFromTemplate } from '@pdfme/common';
+import { Template, Font, checkTemplate, getInputFromTemplate } from '@pdfme-tables/common';
 import { examplePdfb64, dogPngb64 } from './sampleData';
 export const getSampleTemplate = (): Template => ({
   schemas: [

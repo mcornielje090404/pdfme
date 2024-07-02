@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { PreviewProps } from '@pdfme/common';
+import { PreviewProps } from '@pdfme-tables/common';
 import { PreviewUI } from './class';
 import { DESTROYED_ERR_MSG } from './constants.js';
 import Preview from './components/Preview';

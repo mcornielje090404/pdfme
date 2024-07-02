@@ -90,12 +90,12 @@ The following type, function and classes are available in pdfme.
 If your environment uses webpack, import the necessary items as shown below.
 
 ````ts
-import type { Template } from '@pdfme/common';
-import { generate } from '@pdfme/generator';```
+import type { Template } from '@pdfme-tables/common';
+import { generate } from '@pdfme-tables/generator';```
 
 ```ts
-import type { Template } from '@pdfme/common';
-import {  Designer, Form, Viewer } from '@pdfme/ui';
+import type { Template } from '@pdfme-tables/common';
+import {  Designer, Form, Viewer } from '@pdfme-tables/ui';
 ````
 
 **All objects use `Template`, which will be briefly explained in the next section.**
@@ -127,7 +127,7 @@ Let's take a look at some specific data.
 ### Minimal Template
 
 ```ts
-import { Template, BLANK_PDF } from '@pdfme/common';
+import { Template, BLANK_PDF } from '@pdfme-tables/common';
 
 const template: Template = {
   basePdf: BLANK_PDF,
@@ -165,8 +165,8 @@ The PDF generator function, `generate`, takes 2 arguments of `template` and `inp
 The code to generate a PDF file using the [template created above](https://pdfme.com/docs/getting-started#sample-template) is shown below.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
+import type { Template } from '@pdfme-tables/common';
+import { generate } from '@pdfme-tables/generator';
 
 const template: Template = {
   // skip...　Check the Template section.
@@ -204,8 +204,8 @@ You can design your own template from [Template Design page](https://pdfme.com/t
 Let's integrate the designer using the template created above as the default template.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Designer } from '@pdfme/ui';
+import type { Template } from '@pdfme-tables/common';
+import { Designer } from '@pdfme-tables/ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
@@ -237,8 +237,8 @@ You can use templates to create forms and PDF viewers.
 The Form creates a UI for the user to enter schemas based on the template.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Form } from '@pdfme/ui';
+import type { Template } from '@pdfme-tables/common';
+import { Form } from '@pdfme-tables/ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
@@ -272,8 +272,8 @@ The Viewer is a byproduct of the Form development process, but it allows you to 
 Using the Viewer is basically the same as using the Form, except that user cannot edit it.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Viewer } from '@pdfme/ui';
+import type { Template } from '@pdfme-tables/common';
+import { Viewer } from '@pdfme-tables/ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
