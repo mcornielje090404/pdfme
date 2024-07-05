@@ -319,10 +319,8 @@ export const schemasList2template = (schemasList: SchemaForUI[][], basePdf: Base
       delete cur.id;
       // @ts-ignore
       delete cur.key;
-      acc[k] = {
-        ...cur,
-        sortOrder: index,
-      };
+
+      acc[k] = cur;
 
       return acc;
     }, {} as { [key: string]: Schema })

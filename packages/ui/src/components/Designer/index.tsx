@@ -104,8 +104,16 @@ const TemplateEditor = ({
       past.current.push(cloneDeep(schemasList[pageCursor]));
       const _schemasList = cloneDeep(schemasList);
       _schemasList[pageCursor] = newSchemas;
-      setSchemasList(_schemasList);
-      onChangeTemplate(schemasList2template(_schemasList, template.basePdf));
+
+      const schemasWithSortOrder = _schemasList.map((schemas) =>
+        schemas.map((schema, index) => ({
+          ...schema,
+          sortOrder: index,
+        }))
+      );
+
+      setSchemasList(schemasWithSortOrder);
+      onChangeTemplate(schemasList2template(schemasWithSortOrder, template.basePdf));
     },
     [template, schemasList, pageCursor, onChangeTemplate]
   );
